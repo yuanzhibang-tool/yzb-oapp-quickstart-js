@@ -56,13 +56,13 @@ async function signIn() {
 
 // !进行config配置
 function coreConfig(jsTicketInfo) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         const config = {
             data: jsTicketInfo,
-            next: function (result) {
+            next: (result) => {
                 resolve(result);
             },
-            error: function (error) {
+            error: (error) => {
                 reject(error);
             }
         };
@@ -72,14 +72,14 @@ function coreConfig(jsTicketInfo) {
 
 // !获取auth code
 function requestAuthCode(appId) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         const config = {
             data: { app_id: appId },
-            next: function (result) {
+            next: (result) => {
                 const code = result.code;
                 resolve(code);
             },
-            error: function (error) {
+            error: (error) => {
                 reject(error);
             }
         };
@@ -104,7 +104,7 @@ function getUserinfoByCode(apiUrl, code) {
 
 // !ajax 请求 api Promise封装
 function requestApi(url, postData) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         const formData = new FormData();
         Object.keys(postData).forEach((key) => {
             formData.append(key, postData[key]);
@@ -113,7 +113,7 @@ function requestApi(url, postData) {
         ajaxObj.open('POST', url, true);
         ajaxObj.timeout = 1000 * 10;
         ajaxObj.send(formData);
-        ajaxObj.onreadystatechange = function () {
+        ajaxObj.onreadystatechange = () => {
             if (ajaxObj.readyState === 4) {
                 if (ajaxObj.status === 200) {
                     var apiResponse = JSON.parse(ajaxObj.responseText);
