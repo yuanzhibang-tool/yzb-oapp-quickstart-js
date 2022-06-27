@@ -6,7 +6,7 @@
 // 应用配置信息
 var appConfig = {
     appId: '101192',
-    jsArray: [
+    jsApiList: [
         'core.requestAuthCode',
         'core.requestAccess'
     ],
@@ -30,7 +30,7 @@ async function signIn() {
         try {
             // !第一步、获取当前页面URL签名信息
             var jsApiCheckInfo = await getJsApiCheckInfo(appConfig.getJsApiCheckInfoApiUrl);
-            jsApiCheckInfo['js_api_list'] = appConfig.jsArray;
+            jsApiCheckInfo['js_api_list'] = appConfig.jsApiList;
             jsApiCheckInfo['is_spa'] = true; // !是否为单页应用,单页面应用会对域名进行授权,域名下切换path不需要重新验证,否则验证path
             // !第二步、进行core.config配置
             await coreConfig(jsApiCheckInfo);
