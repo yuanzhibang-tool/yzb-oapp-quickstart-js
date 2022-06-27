@@ -5,12 +5,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
-    <title>Document</title>
+    <title>猿之棒-获取免登陆验证Code</title>
+    <!-- 猿之棒js-bridge文件,最新版参照:http://doc.yuanzhibang.com/2991624 -->
+    <script src="https://static.yuanzhibang.com/app/open/js/bridge/js-yzb-bridge-v0.0.23.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrapper .header {
+            text-align: center;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .code {
+            padding: 15px;
+            background-color: #eee;
+            margin: 15px 0;
+            min-height: 50px;
+            border-radius: 5px;
+            text-align: left;
+            word-break: break-all;
+        }
+
+        button {
+            user-select: none;
+            width: 140px;
+            height: 45px;
+            font-size: 17px;
+            background: #018eff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: #0183ed;
+        }
+
+        button:active {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 
 <body>
-
+    <div class="wrapper">
+        <div class="header">
+            <div class="title">
+                <span>猿之棒-获取免登陆验证Code</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="code">
+                Auth Code :
+                <span class="result" id="result"></span>
+            </div>
+            <button class="submit" onclick="init()">点击获取Code</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
