@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Chrome",
-            "request": "launch",
+            "name": "Debug Renderer",
             "type": "pwa-chrome",
-            "url": "http://localhost:9999",
-            "webRoot": "${workspaceFolder}"
+            "webRoot": "${workspaceFolder}",
+            "request": "attach",
+            "port": 9789
         }
     ]
 }
