@@ -21,6 +21,8 @@ function init() {
     });
 }
 
+init();
+
 async function signIn() {
     if (yzb.helper.isRunInClientDesktop()) {
         var codeResultDom = document.querySelector('#auth_code_result');
