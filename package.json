@@ -4,7 +4,8 @@
   "description": "原生实现猿之棒前端应用相关授权演示",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify ./with-npm-moudle-script.js  -o ./dist/app.bundle.js"
+    "build": "browserify ./with-npm-moudle-script.js  -o ./dist/app.bundle.js",
+    "merge-to-main": "yzb-merge-main"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "@yuanzhibang/renderer": "^0.0.31"
   },
   "devDependencies": {
+    "@yuanzhibang/cli": "^0.0.15",
     "browserify": "^17.0.0"
   }
 }
