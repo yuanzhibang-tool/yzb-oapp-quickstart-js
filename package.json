@@ -1,0 +1,25 @@
+{
+  "name": "yzb-oapp-quick-start-js",
+  "version": "1.0.0",
+  "description": "原生实现猿之棒前端应用相关授权演示",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify ./with-npm-moudle-script.js  -o ./dist/app.bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuanzhibang-tool/yzb-oapp-quick-start-js.git"
+  },
+  "author": "yuanzhibang.com",
+  "license": "Apache2.0 License",
+  "bugs": {
+    "url": "https://github.com/yuanzhibang-tool/yzb-oapp-quick-start-js/issues"
+  },
+  "homepage": "https://github.com/yuanzhibang-tool/yzb-oapp-quick-start-js#readme",
+  "dependencies": {
+    "@yuanzhibang/renderer": "^0.0.31"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  }
+}
