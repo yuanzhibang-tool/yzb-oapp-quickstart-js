@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Debug Renderer",
-            "type": "pwa-chrome",
+            "type": "chrome",
             "webRoot": "${workspaceFolder}",
             "request": "attach",
             "port": 9789

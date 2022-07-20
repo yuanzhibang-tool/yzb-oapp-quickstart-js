@@ -7,8 +7,20 @@ var appConfig = {
         'core.requestAccess'
     ],
     getJsApiCheckInfoApiUrl: 'https://demo-api-app.yuanzhibang.com/Api/getJsApiCheckInfo',
-    getUserOpenIdAndToken: 'https://demo-api-app.yuanzhibang.com/Api/getUserinfoTokenByCode',
+    getUserOpenIdAndTokenApiUrl: 'https://demo-api-app.yuanzhibang.com/Api/getUserinfoTokenByCode',
 };
+
+// !在yzb.ready中执行对应的操作.
+function init() {
+    yzb.ready(() => {
+        document.getElementById('submit').addEventListener('click', () => {
+            signIn();
+        });
+        signIn();
+    });
+}
+
+init();
 
 async function signIn() {
     if (yzb.helper.isRunInClientDesktop()) {
@@ -17,8 +29,9 @@ async function signIn() {
         var tokenResultDom = document.querySelector('#token_result');
         codeResultDom.innerText = '正在获取中...';
         try {
-            var authCode = await getAuthCodeWithYzbRenderer();
-            var userTokenInfo = await getUserinfoByCode(appConfig.getUserOpenIdAndToken, authCode);
+            var authCodeInfo = await getAuthCodeWithYzbRenderer();
+            codeResultDom.innerText = authCodeInfo.code;
+            var userTokenInfo = await getUserinfoByCode(appConfig.getUserOpenIdAndTokenApiUrl, authCodeInfo.code);
             openIdResultDom.innerText = userTokenInfo.open_id;
             tokenResultDom.innerText = userTokenInfo.token;
         } catch (error) {
@@ -31,7 +44,7 @@ async function signIn() {
 }
 
 function getAuthCodeWithYzbRenderer() {
-    return Renderer.getAuthCode(appConfig.appId, appConfig.jsApiList, getJsApiCheckInfo());
+    return Renderer.getAuthCode(appConfig.appId, appConfig.jsApiList, getJsApiCheckInfo(appConfig.getJsApiCheckInfoApiUrl));
 }
 
 function getUserinfoByCode(apiUrl, code) {
@@ -45,12 +58,7 @@ function getJsApiCheckInfo(apiUrl) {
     const postData = { url: url };
     return new Promise((resolve, reject) => {
         requestApi(apiUrl, postData).then((response) => {
-            if ("2000" === response.status) {
-                // 验证成功
-                resolve(response.data);
-            } else {
-                reject(response);
-            }
+            resolve(response)
         }).catch((error) => {
             reject(error);
         });
